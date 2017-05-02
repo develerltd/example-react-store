@@ -9,29 +9,32 @@ class Users extends StoreBase () {
 		};
 	}
 
-	loadUser(id) {
+	async loadUser(id) {
 		this.update({
 			...this.state,
 			loading: true
 		});
 
+		try {
+			let response = fetch('/get-user/' + id, {
+				method: 'GET',
+				new Headers({
+					'Content-Type': 'application/json'
+				})
+			});
 
-		fetch('/get-user/' + id, {
-			new Header({
-				'Content-Type': 'application/json'
-			})
-		}).then((response) => {
 			this.update({
 				id: response.id,
 				loading: false
 			});
-		}, (error) => {
+		} catch (e) {
+			console.error(e);
 			this.update({
 				id: false,
 				loading: false,
 				error: true
-			});
-		});
+			});			
+		}
 	}
 }
 
