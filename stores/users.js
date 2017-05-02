@@ -16,7 +16,7 @@ class Users extends StoreBase () {
 		});
 
 		try {
-			let response = fetch('/get-user/' + id, {
+			let response = await fetch('/get-user/' + id, {
 				method: 'GET',
 				new Headers({
 					'Content-Type': 'application/json'
