@@ -2,7 +2,7 @@ import React from 'react';
 import Component from 'storeact';
 import Users$ from 'stores/users';
 
-class MyComponent extends Component {
+export default class MyComponent extends Component {
 	constructor(props) {
 		super(props);
 
